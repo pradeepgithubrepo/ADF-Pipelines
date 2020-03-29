@@ -1,0 +1,110 @@
+{
+	"name": "5928sourcedataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "5928Localfilesystem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "rank",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "company.founded",
+				"type": "String"
+			},
+			{
+				"name": "company.name",
+				"type": "String"
+			},
+			{
+				"name": "company.relationship",
+				"type": "String"
+			},
+			{
+				"name": "company.sector",
+				"type": "String"
+			},
+			{
+				"name": "company.type",
+				"type": "String"
+			},
+			{
+				"name": "demographics.age",
+				"type": "String"
+			},
+			{
+				"name": "demographics.gender",
+				"type": "String"
+			},
+			{
+				"name": "location.citizenship",
+				"type": "String"
+			},
+			{
+				"name": "location.country code",
+				"type": "String"
+			},
+			{
+				"name": "location.gdp",
+				"type": "String"
+			},
+			{
+				"name": "location.region",
+				"type": "String"
+			},
+			{
+				"name": "wealth.type",
+				"type": "String"
+			},
+			{
+				"name": "wealth.worth in billions",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.category",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.from emerging",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.industry",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.inherited",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.was founder",
+				"type": "String"
+			},
+			{
+				"name": "wealth.how.was political",
+				"type": "String"
+			}
+		]
+	}
+}
