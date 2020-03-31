@@ -11,6 +11,12 @@
 		"5928Localfilesystem_password": {
 			"value": ""
 		},
+		"6063_src_blob_accountKey": {
+			"value": ""
+		},
+		"6063_Dest_blob_accountKey": {
+			"value": ""
+		},
 		"5928AzureDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://pradeepadls.dfs.core.windows.net"
 		},
@@ -25,6 +31,12 @@
 		},
 		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
+		},
+		"6063_src_blob_properties_typeProperties_url": {
+			"value": "https://pradeepadls.dfs.core.windows.net"
+		},
+		"6063_Dest_blob_properties_typeProperties_url": {
+			"value": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""

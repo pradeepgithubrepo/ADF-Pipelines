@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of '5928Localfilesystem'"
 		},
+		"6063_src_blob_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of '6063_src_blob'"
+		},
+		"6063_Dest_blob_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of '6063_Dest_blob'"
+		},
 		"5928AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
@@ -34,6 +42,14 @@
 		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"6063_src_blob_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
+		},
+		"6063_Dest_blob_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"type": "string",
@@ -65,11 +81,23 @@
 					"5928AzureDataLakeStorage_accountKey": {
 						"value": "[parameters('5928AzureDataLakeStorage_accountKey')]"
 					},
+					"6063_src_blob_accountKey": {
+						"value": "[parameters('6063_src_blob_accountKey')]"
+					},
+					"6063_Dest_blob_accountKey": {
+						"value": "[parameters('6063_Dest_blob_accountKey')]"
+					},
 					"5928Localfilesystem_password": {
 						"value": "[parameters('5928Localfilesystem_password')]"
 					},
 					"5928AzureDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('5928AzureDataLakeStorage_properties_typeProperties_url')]"
+					},
+					"6063_src_blob_properties_typeProperties_url": {
+						"value": "[parameters('6063_src_blob_properties_typeProperties_url')]"
+					},
+					"6063_Dest_blob_properties_typeProperties_url": {
+						"value": "[parameters('6063_Dest_blob_properties_typeProperties_url')]"
 					},
 					"5928Localfilesystem_properties_typeProperties_host": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_host')]"
