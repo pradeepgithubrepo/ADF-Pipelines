@@ -103,6 +103,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"StartDt": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
