@@ -23,9 +23,9 @@
 					"body": {
 						"DataFactoryName": "@{pipeline().DataFactory}",
 						"PipelineName": "@{pipeline().Pipeline}",
-						"Subject": "An error has occurred!",
-						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
-						"EmailTo": "ppradeep2008@gmail.com"
+						"Subject": "@{pipeline().parameters.Subject}",
+						"ErrorMessage": "@{pipeline().parameters.ErrorMessage}",
+						"EmailTo": "@pipeline().parameters.EmailTo"
 					}
 				}
 			}
