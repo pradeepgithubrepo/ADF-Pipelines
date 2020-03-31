@@ -51,6 +51,31 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Send_Notification",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Azure onprem Copy Activity",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Send_Notification",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"EmailTo": "ppradeep2008@gmail.com",
+						"ErrorMessage": "It is a success",
+						"Subject": "Success"
+					}
+				}
 			}
 		],
 		"annotations": []
