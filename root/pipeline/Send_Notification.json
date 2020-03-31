@@ -30,6 +30,20 @@
 				}
 			}
 		],
+		"parameters": {
+			"EmailTo": {
+				"type": "string",
+				"defaultValue": "No email sent"
+			},
+			"ErrorMessage": {
+				"type": "string",
+				"defaultValue": "No email sent"
+			},
+			"Subject": {
+				"type": "string",
+				"defaultValue": "No email sent"
+			}
+		},
 		"annotations": []
 	}
 }
