@@ -76,6 +76,31 @@
 						"Subject": "Success"
 					}
 				}
+			},
+			{
+				"name": "Send_Notification_failure",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Azure onprem Copy Activity",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Send_Notification",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"EmailTo": "ppradeep2008@gmail.com",
+						"ErrorMessage": "It is a failure ",
+						"Subject": "Job failed"
+					}
+				}
 			}
 		],
 		"annotations": []
