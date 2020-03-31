@@ -30,39 +30,16 @@
 		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/5928AzureDataLakeStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('5928AzureDataLakeStorage_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('5928AzureDataLakeStorage_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/onpremir')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Send_Notification')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -112,6 +89,33 @@
 					}
 				},
 				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/5928AzureDataLakeStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('5928AzureDataLakeStorage_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('5928AzureDataLakeStorage_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/onpremir')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
 			},
 			"dependsOn": []
 		},
@@ -430,6 +434,49 @@
 						"intervalInSeconds": 30
 					},
 					"dependsOn": []
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/On Prem Pipeline')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/6062scheduledtrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "On Prem Pipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"StartDt": "[parameters('6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Week",
+						"interval": 1,
+						"startTime": "2020-03-31T14:01:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								30
+							],
+							"hours": [
+								2
+							],
+							"weekDays": [
+								"Tuesday"
+							]
+						}
+					}
 				}
 			},
 			"dependsOn": [

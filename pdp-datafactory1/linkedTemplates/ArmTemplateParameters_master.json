@@ -23,6 +23,9 @@
 		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
 		},
+		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
 		"containerUri": {
 			"value": ""
 		},
