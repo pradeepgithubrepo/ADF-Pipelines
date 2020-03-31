@@ -27,6 +27,10 @@
 			"type": "string",
 			"defaultValue": "pradadmin"
 		},
+		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +72,9 @@
 					},
 					"5928Localfilesystem_properties_typeProperties_userId": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]"
+					},
+					"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
+						"value": "[parameters('6061tumblingtrigger_properties_pipeline_parameters_StartDt')]"
 					}
 				}
 			},

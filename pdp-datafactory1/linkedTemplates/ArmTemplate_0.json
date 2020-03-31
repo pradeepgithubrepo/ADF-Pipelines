@@ -26,6 +26,10 @@
 		"5928Localfilesystem_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "pradadmin"
+		},
+		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
 		}
 	},
 	"variables": {
@@ -385,12 +389,51 @@
 						}
 					}
 				],
+				"parameters": {
+					"StartDt": {
+						"type": "string"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/5928sourcedataset')]",
 				"[concat(variables('factoryId'), '/datasets/5928destfile')]",
 				"[concat(variables('factoryId'), '/pipelines/Send_Notification')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/6061tumblingtrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "On Prem Pipeline",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"StartDt": "[parameters('6061tumblingtrigger_properties_pipeline_parameters_StartDt')]"
+					}
+				},
+				"type": "TumblingWindowTrigger",
+				"typeProperties": {
+					"frequency": "Hour",
+					"interval": 1,
+					"startTime": "2020-03-31T11:33:00.000Z",
+					"endTime": "2020-04-01T01:33:00.000Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 50,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/On Prem Pipeline')]"
 			]
 		}
 	]

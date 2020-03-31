@@ -19,6 +19,9 @@
 		},
 		"5928Localfilesystem_properties_typeProperties_userId": {
 			"value": "pradadmin"
+		},
+		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
+			"value": "@trigger().outputs.windowStartTime"
 		}
 	}
 }
