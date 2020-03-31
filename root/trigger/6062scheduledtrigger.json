@@ -3,7 +3,17 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "On Prem Pipeline",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"StartDt": "@trigger().outputs.windowStartTime"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
