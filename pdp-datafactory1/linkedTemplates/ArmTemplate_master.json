@@ -7,13 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "pdp-datafactory1"
 		},
+		"5928AzureDataLakeStorage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of '5928AzureDataLakeStorage'"
+		},
 		"5928Localfilesystem_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of '5928Localfilesystem'"
 		},
-		"5928AzureDataLakeStorage_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of '5928AzureDataLakeStorage'"
+		"5928AzureDataLakeStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"5928Localfilesystem_properties_typeProperties_host": {
 			"type": "string",
@@ -22,10 +26,6 @@
 		"5928Localfilesystem_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "pradadmin"
-		},
-		"5928AzureDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"type": "string",

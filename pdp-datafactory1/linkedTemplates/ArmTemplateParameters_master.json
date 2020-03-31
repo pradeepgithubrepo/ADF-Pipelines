@@ -5,20 +5,20 @@
 		"factoryName": {
 			"value": "pdp-datafactory1"
 		},
+		"5928AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
 		"5928Localfilesystem_password": {
 			"value": ""
 		},
-		"5928AzureDataLakeStorage_accountKey": {
-			"value": ""
+		"5928AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"5928Localfilesystem_properties_typeProperties_host": {
 			"value": "C:\\Users\\pradadmin\\Desktop\\sourcedata"
 		},
 		"5928Localfilesystem_properties_typeProperties_userId": {
 			"value": "pradadmin"
-		},
-		"5928AzureDataLakeStorage_properties_typeProperties_url": {
-			"value": "https://pradeepadls.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""
