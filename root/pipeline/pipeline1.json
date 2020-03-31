@@ -51,6 +51,40 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Send_email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Azure onprem Copy Activity",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-02.southeastasia.logic.azure.com:443/workflows/c09844739c1c4361b53baf1591347584/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=hYJkdMsw1XTgls6k_D9rO_K81Sjyz2T66OuAe2K_fMQ",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "An error has occurred!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "ppradeep2008@gmail.com"
+					}
+				}
 			}
 		],
 		"annotations": []
