@@ -35,10 +35,6 @@
 			"type": "string",
 			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
 		},
-		"Az_EventTrig_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
-		},
 		"5928Localfilesystem_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "C:\\Users\\pradadmin\\Desktop\\sourcedata"
@@ -52,6 +48,14 @@
 			"defaultValue": "@triggerBody().fileName"
 		},
 		"6063_Eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
+		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"Az_EventTrig_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
@@ -167,26 +171,6 @@
 						"type": "SecureString",
 						"value": "[parameters('6063_src_blob_accountKey')]"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Az_EventTrig')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/images",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('Az_EventTrig_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
 				}
 			},
 			"dependsOn": []
@@ -634,6 +618,38 @@
 					"blobPathEndsWith": ".png",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/File Copy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Az_EventTrig')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "File Copy",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SourceFile": "[parameters('Az_EventTrig_properties_File Copy_parameters_SourceFile')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Az_EventTrig_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
