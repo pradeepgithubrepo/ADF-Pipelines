@@ -51,7 +51,7 @@
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
 		},
-		"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
+		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
@@ -113,8 +113,8 @@
 					"5928Localfilesystem_properties_typeProperties_userId": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]"
 					},
-					"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
-						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_sourcefile')]"
+					"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
+						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
 					},
 					"6063_Eventtrigger_properties_typeProperties_scope": {
 						"value": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]"

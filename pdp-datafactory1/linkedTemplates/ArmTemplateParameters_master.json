@@ -38,7 +38,7 @@
 		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
 		},
-		"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
+		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
 			"value": "@triggerBody().fileName"
 		},
 		"6063_Eventtrigger_properties_typeProperties_scope": {
