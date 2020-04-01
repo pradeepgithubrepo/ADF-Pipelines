@@ -16,9 +16,12 @@
 			"transformations": [
 				{
 					"name": "Filteryrs"
+				},
+				{
+					"name": "AggregateComedyRatings"
 				}
 			],
-			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> MoviesDB\nMoviesDB filter(toInteger(year) >= 1910 && toInteger(year) <=2010 && rlike(genres, 'Comedy')) ~> Filteryrs"
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> MoviesDB\nMoviesDB filter(toInteger(year) >= 1910 && toInteger(year) <=2010 && rlike(genres, 'Comedy')) ~> Filteryrs\nFilteryrs aggregate(groupBy(year)) ~> AggregateComedyRatings"
 		}
 	}
 }
