@@ -1,0 +1,28 @@
+{
+	"name": "src_ds_6063",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "6063_src_blob",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FileName": {
+				"type": "string",
+				"defaultValue": "@pipeline().parameters.SourceFile"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": "nsrc_image",
+				"fileSystem": "source"
+			}
+		}
+	}
+}
