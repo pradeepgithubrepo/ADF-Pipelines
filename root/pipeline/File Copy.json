@@ -19,22 +19,20 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"wildcardFileName": "*.png"
+							"recursive": true
 						}
 					},
 					"sink": {
 						"type": "BinarySink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "PreserveHierarchy"
+							"type": "AzureBlobFSWriteSettings"
 						}
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "6063_src_ds",
+						"referenceName": "src_ds_6063",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileName": "@pipeline().parameters.SourceFile"
@@ -43,7 +41,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "6063_dst_ds",
+						"referenceName": "dst_ds_6063",
 						"type": "DatasetReference"
 					}
 				]
