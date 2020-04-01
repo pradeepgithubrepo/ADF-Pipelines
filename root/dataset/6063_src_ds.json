@@ -16,8 +16,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "@dataset().filename",
-				"folderPath": "src_image",
+				"fileName": "@dataset().FileName",
+				"folderPath": "nsrc_image",
 				"fileSystem": "source"
 			}
 		}
