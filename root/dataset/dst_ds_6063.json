@@ -1,0 +1,18 @@
+{
+	"name": "dst_ds_6063",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "6063_Dest_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "image",
+				"fileSystem": "dest"
+			}
+		}
+	}
+}
