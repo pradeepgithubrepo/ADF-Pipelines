@@ -6,7 +6,7 @@
 		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/source/blobs/images",
+			"blobPathBeginsWith": "/source/images",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls",
 			"events": [
