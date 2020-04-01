@@ -51,19 +51,19 @@
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
 		},
-		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"6063_Eventtrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
-		},
 		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
 		"Az_EventTrig_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
+		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"6063_Eventtrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
@@ -121,17 +121,17 @@
 					"5928Localfilesystem_properties_typeProperties_userId": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]"
 					},
-					"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
-						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
-					},
-					"6063_Eventtrigger_properties_typeProperties_scope": {
-						"value": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]"
-					},
 					"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
 						"value": "[parameters('Az_EventTrig_properties_File Copy_parameters_SourceFile')]"
 					},
 					"Az_EventTrig_properties_typeProperties_scope": {
 						"value": "[parameters('Az_EventTrig_properties_typeProperties_scope')]"
+					},
+					"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
+						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
+					},
+					"6063_Eventtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]"
 					},
 					"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 						"value": "[parameters('6061tumblingtrigger_properties_pipeline_parameters_StartDt')]"

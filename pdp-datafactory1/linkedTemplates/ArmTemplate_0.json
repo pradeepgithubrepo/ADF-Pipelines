@@ -43,19 +43,19 @@
 			"type": "string",
 			"defaultValue": "pradadmin"
 		},
-		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"6063_Eventtrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
-		},
 		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
 		"Az_EventTrig_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
+		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"6063_Eventtrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
@@ -212,7 +212,31 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/6063_dst_ds')]",
+			"name": "[concat(parameters('factoryName'), '/5928Localfilesystem')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('5928Localfilesystem_properties_typeProperties_host')]",
+					"userId": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('5928Localfilesystem_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "onpremir",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/onpremir')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dst_ds_6063')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -235,7 +259,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/6063_src_ds')]",
+			"name": "[concat(parameters('factoryName'), '/src_ds_6063')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -268,30 +292,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/5928Localfilesystem')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('5928Localfilesystem_properties_typeProperties_host')]",
-					"userId": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('5928Localfilesystem_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "onpremir",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/onpremir')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/File Copy')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -314,22 +314,20 @@
 								"type": "BinarySource",
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"wildcardFileName": "*.png"
+									"recursive": true
 								}
 							},
 							"sink": {
 								"type": "BinarySink",
 								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings",
-									"copyBehavior": "PreserveHierarchy"
+									"type": "AzureBlobFSWriteSettings"
 								}
 							},
 							"enableStaging": false
 						},
 						"inputs": [
 							{
-								"referenceName": "6063_src_ds",
+								"referenceName": "src_ds_6063",
 								"type": "DatasetReference",
 								"parameters": {
 									"FileName": "@pipeline().parameters.SourceFile"
@@ -338,7 +336,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "6063_dst_ds",
+								"referenceName": "dst_ds_6063",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -353,8 +351,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/6063_src_ds')]",
-				"[concat(variables('factoryId'), '/datasets/6063_dst_ds')]"
+				"[concat(variables('factoryId'), '/datasets/src_ds_6063')]",
+				"[concat(variables('factoryId'), '/datasets/dst_ds_6063')]"
 			]
 		},
 		{
@@ -595,39 +593,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/6063_Eventtrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "File Copy",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"SourceFile": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
-						}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs//nsrc_image/",
-					"blobPathEndsWith": ".png",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/File Copy')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Az_EventTrig')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -650,6 +615,38 @@
 					"blobPathBeginsWith": "/source/blobs/",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Az_EventTrig_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/File Copy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/6063_Eventtrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "File Copy",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SourceFile": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/nsrc_image",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
