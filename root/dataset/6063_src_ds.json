@@ -5,6 +5,12 @@
 			"referenceName": "6063_src_blob",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "@pipeline().parameters.sourcefile"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
