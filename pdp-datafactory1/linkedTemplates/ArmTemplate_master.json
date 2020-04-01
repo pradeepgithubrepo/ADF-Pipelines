@@ -15,13 +15,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of '5928Localfilesystem'"
 		},
-		"6063_src_blob_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of '6063_src_blob'"
-		},
 		"6063_Dest_blob_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of '6063_Dest_blob'"
+		},
+		"6063_src_blob_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of '6063_src_blob'"
 		},
 		"5928AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
@@ -35,6 +35,14 @@
 			"type": "string",
 			"defaultValue": "pradadmin"
 		},
+		"6063_Dest_blob_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
+		},
+		"6063_src_blob_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
+		},
 		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
@@ -43,13 +51,13 @@
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
 		},
-		"6063_src_blob_properties_typeProperties_url": {
+		"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
 			"type": "string",
-			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
+			"defaultValue": "@triggerBody().fileName"
 		},
-		"6063_Dest_blob_properties_typeProperties_url": {
+		"6063_Eventtrigger_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "https://pradeepadls.dfs.core.windows.net"
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
 		"containerUri": {
 			"type": "string",
@@ -81,11 +89,11 @@
 					"5928AzureDataLakeStorage_accountKey": {
 						"value": "[parameters('5928AzureDataLakeStorage_accountKey')]"
 					},
-					"6063_src_blob_accountKey": {
-						"value": "[parameters('6063_src_blob_accountKey')]"
-					},
 					"6063_Dest_blob_accountKey": {
 						"value": "[parameters('6063_Dest_blob_accountKey')]"
+					},
+					"6063_src_blob_accountKey": {
+						"value": "[parameters('6063_src_blob_accountKey')]"
 					},
 					"5928Localfilesystem_password": {
 						"value": "[parameters('5928Localfilesystem_password')]"
@@ -93,17 +101,23 @@
 					"5928AzureDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('5928AzureDataLakeStorage_properties_typeProperties_url')]"
 					},
-					"6063_src_blob_properties_typeProperties_url": {
-						"value": "[parameters('6063_src_blob_properties_typeProperties_url')]"
-					},
 					"6063_Dest_blob_properties_typeProperties_url": {
 						"value": "[parameters('6063_Dest_blob_properties_typeProperties_url')]"
+					},
+					"6063_src_blob_properties_typeProperties_url": {
+						"value": "[parameters('6063_src_blob_properties_typeProperties_url')]"
 					},
 					"5928Localfilesystem_properties_typeProperties_host": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_host')]"
 					},
 					"5928Localfilesystem_properties_typeProperties_userId": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]"
+					},
+					"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
+						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_sourcefile')]"
+					},
+					"6063_Eventtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]"
 					},
 					"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 						"value": "[parameters('6061tumblingtrigger_properties_pipeline_parameters_StartDt')]"

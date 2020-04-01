@@ -11,10 +11,10 @@
 		"5928Localfilesystem_password": {
 			"value": ""
 		},
-		"6063_src_blob_accountKey": {
+		"6063_Dest_blob_accountKey": {
 			"value": ""
 		},
-		"6063_Dest_blob_accountKey": {
+		"6063_src_blob_accountKey": {
 			"value": ""
 		},
 		"5928AzureDataLakeStorage_properties_typeProperties_url": {
@@ -26,17 +26,23 @@
 		"5928Localfilesystem_properties_typeProperties_userId": {
 			"value": "pradadmin"
 		},
+		"6063_Dest_blob_properties_typeProperties_url": {
+			"value": "https://pradeepadls.dfs.core.windows.net"
+		},
+		"6063_src_blob_properties_typeProperties_url": {
+			"value": "https://pradeepadls.dfs.core.windows.net"
+		},
 		"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
 		},
 		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
 		},
-		"6063_src_blob_properties_typeProperties_url": {
-			"value": "https://pradeepadls.dfs.core.windows.net"
+		"6063_Eventtrigger_properties_File Copy_parameters_sourcefile": {
+			"value": "@triggerBody().fileName"
 		},
-		"6063_Dest_blob_properties_typeProperties_url": {
-			"value": "https://pradeepadls.dfs.core.windows.net"
+		"6063_Eventtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
 		"containerUri": {
 			"value": ""
