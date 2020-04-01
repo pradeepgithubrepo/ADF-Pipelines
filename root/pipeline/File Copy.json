@@ -46,6 +46,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"sourcefile": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
