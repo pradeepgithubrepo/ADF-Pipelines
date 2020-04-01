@@ -44,6 +44,9 @@
 		"6063_Eventtrigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
+		"Az_EventTrig_properties_typeProperties_scope": {
+			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
 		"containerUri": {
 			"value": ""
 		},

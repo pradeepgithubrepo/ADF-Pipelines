@@ -59,6 +59,10 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
+		"Az_EventTrig_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -106,6 +110,9 @@
 					},
 					"6063_src_blob_properties_typeProperties_url": {
 						"value": "[parameters('6063_src_blob_properties_typeProperties_url')]"
+					},
+					"Az_EventTrig_properties_typeProperties_scope": {
+						"value": "[parameters('Az_EventTrig_properties_typeProperties_scope')]"
 					},
 					"5928Localfilesystem_properties_typeProperties_host": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_host')]"
