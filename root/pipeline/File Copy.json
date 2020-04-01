@@ -37,7 +37,7 @@
 						"referenceName": "6063_src_ds",
 						"type": "DatasetReference",
 						"parameters": {
-							"FileName": "@pipeline().parameters.sourcefile"
+							"FileName": "@pipeline().parameters.SourceFile"
 						}
 					}
 				],
