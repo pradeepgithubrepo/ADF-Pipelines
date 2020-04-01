@@ -35,7 +35,10 @@
 				"inputs": [
 					{
 						"referenceName": "6063_src_ds",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "@pipeline().parameters.sourcefile"
+						}
 					}
 				],
 				"outputs": [
