@@ -21,6 +21,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "moviefinalsink",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -38,7 +42,7 @@
 					"name": "Moviefilter2"
 				}
 			],
-			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> MoviesDB\nsource(output(\n\t\tmovieId as string,\n\t\ttitle as string,\n\t\tgenres as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> MovieDB2\nMoviesDB filter(rlike(genres, 'Action')) ~> moviefilter\nmoviefilter select(mapColumn(\n\t\tmovieid = movie\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> movieselect\nmovieselect, MovieDB2 join(movieselect@movieid == MovieDB2@movieId,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> MovieJoin\nMovieJoin select(mapColumn(\n\t\tmovieid = movieselect@movieid,\n\t\ttitle,\n\t\tgenres\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Moviefilter2\nMoviefilter2 sink(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> MoviesDB\nsource(output(\n\t\tmovieId as string,\n\t\ttitle as string,\n\t\tgenres as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> MovieDB2\nMoviesDB filter(rlike(genres, 'Action')) ~> moviefilter\nmoviefilter select(mapColumn(\n\t\tmovieid = movie\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> movieselect\nmovieselect, MovieDB2 join(movieselect@movieid == MovieDB2@movieId,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> MovieJoin\nMovieJoin select(mapColumn(\n\t\tmovieid = movieselect@movieid,\n\t\ttitle,\n\t\tgenres\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Moviefilter2\nMoviefilter2 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }

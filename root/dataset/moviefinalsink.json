@@ -1,0 +1,22 @@
+{
+	"name": "moviefinalsink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "5928AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "moviesresult",
+				"fileSystem": "dest"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
