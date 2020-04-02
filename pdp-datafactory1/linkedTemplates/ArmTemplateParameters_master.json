@@ -38,16 +38,16 @@
 		"6062scheduledtrigger_properties_On Prem Pipeline_parameters_StartDt": {
 			"value": "@trigger().outputs.windowStartTime"
 		},
-		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
-			"value": "@triggerBody().fileName"
-		},
-		"Az_EventTrig_properties_typeProperties_scope": {
-			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
-		},
 		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
 			"value": "@triggerBody().fileName"
 		},
 		"6063_Eventtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
+		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
+			"value": "@triggerBody().fileName"
+		},
+		"Az_EventTrig_properties_typeProperties_scope": {
 			"value": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
 		"containerUri": {

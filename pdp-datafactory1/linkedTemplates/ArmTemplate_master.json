@@ -51,19 +51,19 @@
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
 		},
-		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"Az_EventTrig_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
-		},
 		"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
 		"6063_Eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
+		},
+		"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"Az_EventTrig_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/4252b742-3cd4-47a1-af43-30bb66d77529/resourceGroups/pradeep/providers/Microsoft.Storage/storageAccounts/pradeepadls"
 		},
@@ -121,17 +121,35 @@
 					"5928Localfilesystem_properties_typeProperties_userId": {
 						"value": "[parameters('5928Localfilesystem_properties_typeProperties_userId')]"
 					},
-					"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
-						"value": "[parameters('Az_EventTrig_properties_File Copy_parameters_SourceFile')]"
-					},
-					"Az_EventTrig_properties_typeProperties_scope": {
-						"value": "[parameters('Az_EventTrig_properties_typeProperties_scope')]"
-					},
 					"6063_Eventtrigger_properties_File Copy_parameters_SourceFile": {
 						"value": "[parameters('6063_Eventtrigger_properties_File Copy_parameters_SourceFile')]"
 					},
 					"6063_Eventtrigger_properties_typeProperties_scope": {
 						"value": "[parameters('6063_Eventtrigger_properties_typeProperties_scope')]"
+					},
+					"Az_EventTrig_properties_File Copy_parameters_SourceFile": {
+						"value": "[parameters('Az_EventTrig_properties_File Copy_parameters_SourceFile')]"
+					},
+					"Az_EventTrig_properties_typeProperties_scope": {
+						"value": "[parameters('Az_EventTrig_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"6061tumblingtrigger_properties_pipeline_parameters_StartDt": {
 						"value": "[parameters('6061tumblingtrigger_properties_pipeline_parameters_StartDt')]"
@@ -141,7 +159,9 @@
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+			]
 		}
 	]
 }
