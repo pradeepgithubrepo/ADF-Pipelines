@@ -3,10 +3,25 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "moviesdataset",
+						"type": "DatasetReference"
+					},
+					"name": "Moviesource"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
-			"script": ""
+			"transformations": [
+				{
+					"name": "MovieAggregate"
+				},
+				{
+					"name": "GenresSort"
+				}
+			],
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('roundRobin', 8)) ~> Moviesource\nMoviesource aggregate(groupBy(genres),\n\tgenrescount = count(genres)) ~> MovieAggregate\nMovieAggregate sort(desc(genrescount, true)) ~> GenresSort"
 		}
 	}
 }
