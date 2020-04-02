@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"folderPath": "moviesresult",
 				"fileSystem": "dest"
 			},
 			"columnDelimiter": ",",
