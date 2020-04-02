@@ -3,10 +3,29 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "moviesdataset",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesDB"
+				},
+				{
+					"dataset": {
+						"referenceName": "moviesdataset",
+						"type": "DatasetReference"
+					},
+					"name": "MovieDB3"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
-			"script": ""
+			"transformations": [
+				{
+					"name": "moviefilter"
+				}
+			],
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100) ~> MoviesDB\nsource(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> MovieDB3\nMoviesDB filter(rlike(genres, 'Action')) ~> moviefilter"
 		}
 	}
 }
