@@ -1,0 +1,40 @@
+{
+	"name": "Movieprocessing",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "moviesdataset",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesDB"
+				},
+				{
+					"dataset": {
+						"referenceName": "moviesdb2",
+						"type": "DatasetReference"
+					},
+					"name": "MovieDB2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "moviefilter"
+				},
+				{
+					"name": "movieselect"
+				},
+				{
+					"name": "MovieJoin"
+				},
+				{
+					"name": "Moviefilter2"
+				}
+			],
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> MoviesDB\nsource(output(\n\t\tmovieId as string,\n\t\ttitle as string,\n\t\tgenres as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> MovieDB2\nMoviesDB filter(rlike(genres, 'Action')) ~> moviefilter\nmoviefilter select(mapColumn(\n\t\tmovieid = movie\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> movieselect\nmovieselect, MovieDB2 join(movieselect@movieid == MovieDB2@movieId,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> MovieJoin\nMovieJoin select(mapColumn(\n\t\tmovieid = movieselect@movieid,\n\t\tmovieId = MovieDB2@movieId,\n\t\ttitle,\n\t\tgenres\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Moviefilter2"
+		}
+	}
+}
