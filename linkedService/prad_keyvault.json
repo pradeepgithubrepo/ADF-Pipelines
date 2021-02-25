@@ -1,0 +1,11 @@
+{
+	"name": "prad_keyvault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://hcscpockeyvault2.vault.azure.net/"
+		}
+	}
+}
