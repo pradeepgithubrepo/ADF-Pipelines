@@ -3,12 +3,24 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Wait1",
-				"type": "Wait",
+				"name": "pradjar",
+				"type": "DatabricksSparkJar",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 5
+					"mainClassName": "com.hcsc.router",
+					"parameters": []
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks_prad",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
