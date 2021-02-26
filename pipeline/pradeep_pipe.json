@@ -27,6 +27,20 @@
 					"referenceName": "AzureDatabricks_prad",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "pradeep-webhook",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://adb-5339152560185213.13.azuredatabricks.net/api/2.0/jobs/run-now",
+					"method": "POST",
+					"body": {
+						"job_id": 81
+					},
+					"timeout": "00:10:00"
+				}
 			}
 		],
 		"annotations": []
