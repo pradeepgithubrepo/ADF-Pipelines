@@ -1,0 +1,19 @@
+{
+	"name": "AzureDatabricks_prad",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-5339152560185213.13.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "prad_keyvault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "dbkstokenprad"
+			},
+			"existingClusterId": "0225-041655-sulk230"
+		}
+	}
+}
