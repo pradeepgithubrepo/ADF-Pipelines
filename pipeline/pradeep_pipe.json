@@ -16,7 +16,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"mainClassName": "com.hcsc.router",
-					"parameters": []
+					"parameters": [],
+					"libraries": [
+						{
+							"jar": "dbfs:/FileStore/job-jars/cb9c8145_41d8_422c_b691_e4ba16b758c8-hcscProcess_2_1_SNAPSHOT.jar"
+						}
+					]
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricks_prad",
