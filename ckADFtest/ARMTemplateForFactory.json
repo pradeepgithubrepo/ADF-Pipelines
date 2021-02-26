@@ -39,7 +39,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"mainClassName": "com.hcsc.router",
+							"mainClassName": "com.hcsc.money",
 							"parameters": [],
 							"libraries": [
 								{
@@ -434,19 +434,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/prad_keyvault')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureKeyVault",
-				"typeProperties": {
-					"baseUrl": "[parameters('prad_keyvault_properties_typeProperties_baseUrl')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureDatabricks_prad')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -469,6 +456,19 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/prad_keyvault')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/prad_keyvault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('prad_keyvault_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }

@@ -98,7 +98,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"mainClassName": "com.hcsc.router",
+							"mainClassName": "com.hcsc.money",
 							"parameters": [],
 							"libraries": [
 								{
