@@ -5,8 +5,14 @@
 		"factoryName": {
 			"value": "ckADFtest"
 		},
+		"comcast_ADLS_LS_accountKey": {
+			"value": ""
+		},
 		"AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
 			"value": "pradstorage"
+		},
+		"comcast_ADLS_LS_properties_typeProperties_url": {
+			"value": "https://hcscadls.dfs.core.windows.net"
 		},
 		"prad_keyvault_properties_typeProperties_baseUrl": {
 			"value": "https://hcscpockeyvault2.vault.azure.net/"
