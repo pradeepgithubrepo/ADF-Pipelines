@@ -5,12 +5,27 @@
 			"referenceName": "comcast_ADLS_LS",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"sourcd_ds": {
+				"type": "string"
+			},
+			"dest_ds": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "sales.csv",
+				"fileName": {
+					"value": "@dataset().sourcd_ds",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().dest_ds",
+					"type": "Expression"
+				},
 				"fileSystem": "test"
 			},
 			"columnDelimiter": ",",
