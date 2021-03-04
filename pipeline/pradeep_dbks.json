@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Jar1",
+				"name": "dipe_jar_activity",
 				"type": "DatabricksSparkJar",
 				"dependsOn": [],
 				"policy": {
