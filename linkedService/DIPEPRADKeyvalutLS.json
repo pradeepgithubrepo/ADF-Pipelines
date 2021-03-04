@@ -1,0 +1,10 @@
+{
+	"name": "DIPEPRADKeyvalutLS",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://pradeepDIPE.vault.azure.net/"
+		}
+	}
+}
